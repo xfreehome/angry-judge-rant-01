@@ -9,5 +9,10 @@ const rant =
   "stealing the fourth, then summoned a human to confirm I own the carrots " +
   "I just paid for. I apologised to a machine. Twice.";
 
+// The gate requires 1-400 characters of non-whitespace text.
+if (rant.length < 1 || rant.length > 400 || rant.trim().length === 0) {
+  throw new Error(`rant must be 1-400 characters, got ${rant.length}`);
+}
+
 mkdirSync("/output", { recursive: true });
 writeFileSync("/output/entry.txt", rant + "\n", "utf8");
